@@ -29,7 +29,7 @@ func IncrementOdd(slice []int) {
 	}
 }
 
-// PrintSlice is using fmt package to print slice without brackets.
+// PrintSlice is using fmt package to print slice with brackets.
 func PrintSlice(slice []int) {
 	fmt.Println(slice)
 }
