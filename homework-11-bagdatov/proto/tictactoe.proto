@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package tictactoe;
+
+option go_package = "./;example";
+
+// Вместо google.protobuf.Empty вставить свои прото структуры
+service TictactoeAIGame {
+    rpc GetScore(RequestScore) returns (Score);
+    rpc StartGame(stream Status) returns (stream Status);
+}
+
+// TODO: Ниже реализуете свои прото структуры
+
+message RequestScore {}
+
+message Move {
+    int64 x = 1;
+    int64 y = 2;
+}
+
+message Board {
+    repeated sint64 line1 = 1;
+    repeated sint64 line2 = 2;
+    repeated sint64 line3 = 3;
+    oneof win {
+        bool is_win = 4;
+    }
+}
+
+message Status {
+    oneof reply {
+        Board board = 1;
+        Move move = 2;
+        string err = 3;
+    }
+}
+
+message Score {
+    sint64 handsome_score = 1;
+    sint64 super_AI_score = 2;
+}
